@@ -18,11 +18,6 @@ require ('./includes/init.php');
     <input type="password" name="password" id="password"><br><br>
     <label for="password2">Confirmation mot de passe</label><br>
     <input type="password" name="password2" id="password2"><br><br>
-    <label for="type">Type d'utilisateur</label><br>
-    <select name="type" id="type">
-        <option value="Développeur">Développeur</option>
-        <option value="Utilisateur">Utilisateur</option>
-    </select><br><br>
     <label for="phone">Phone</label><br>
     <input type="text" name="phone" id="phone" value="<?php if(isset($_POST['phone'])){echo $_POST['phone'];} ?>"><br><br>
 
@@ -48,26 +43,53 @@ if ((isset($_POST)) && (!empty($_POST['username'])) && (!empty($_POST['last_name
         if ($crypt_pwd != $crypt_pwd2) {
             echo "Les mots de passe ne sont pas identiques";
         } else {
-            //Déplacement photo
-            $file_name = $_FILES['photo']['name'];
-            $tmp_path = $_FILES['photo']['tmp_name'];
-            $new_path = "img/".$file_name;
+            $directory = 'img/';
+            $extensions = array('png', 'jpeg', 'jpg'); //extension autorisé pour les images.
+            $mimes = array('image/png', 'image/jpeg'); //extension autorisé pour les images
 
-            move_uploaded_file($tmp_path, $new_path);
+            // Vérifier le typemime du fichier qui sera uploadé
+            $verifymime = finfo_open(FILEINFO_MIME_TYPE); // vérifier le mime
+            $mime = finfo_file($verifymime, $_FILES['photo']['tmp_name']); // regarder dans ce fichier le type mime
+            if (!in_array($mime, $mimes)) {
+                echo "Ce type de fichier n'est pas autorisé";
+                finfo_close($verifymime); //Une fois vérifié on arrête la lecture
+            } else {
+                finfo_close($verifymime); //Une fois vérifié on arrête la lecture
+                $tableau = explode('.', $_FILES['photo'] ['name']); // on fait un tableau
+                $imagename = $_FILES['photo']['name']; //Nom réel de l'image
+                $extension = $tableau[1];
+                $old_path = $_FILES['photo'] ['tmp_name']; //Nom temporaire donné par le serveur
+                $imagetype = $_FILES['photo'] ['type']; // type de l'image
+                $imagesize = $_FILES['photo'] ['size']; // poids de l'image
+                if (!in_array($extension, $extensions)) {
+                    echo "Ce type de fichier n'est pas de la bonne extension";
+                } else {
+                    //Vérifions si le fichier est supérieur à 8Mo
+                    $taille_maxi = 8000000; // taille maximum autorisé par le serveur.
+                    if ($imagesize > $taille_maxi) {
+                        echo "Désolé le fichier est trop gros..";
+                    } else {
+                        $newname = "photo" . uniqid();
+                        $finalname = $newname . '.' . $extension;
+                        $new_path = $directory . $finalname;
+                        move_uploaded_file($old_path, $new_path);
 
-            //Envoi des données en bdd
-            $request = $db->prepare("INSERT INTO USER VALUES (NULL, :username, :last_name, :first_name, :mail, :password,
-                                            :usertype, :phone, :photo)");
-            $sending = $request->execute([
-                ':username' => $_POST['username'],
-                ':last_name' => $_POST['last_name'],
-                ':first_name' => $_POST['first_name'],
-                ':mail' => $_POST['mail'],
-                ':password' => $crypt_pwd,
-                ':usertype' => $_POST['type'],
-                ':phone' => $_POST['phone'],
-                ':photo' => $new_path
-            ]);
+
+                        //Envoi des données en bdd
+                        $request = $db->prepare("INSERT INTO USER VALUES (NULL, :username, :last_name, :first_name, :mail, :password,
+                                            :phone, :photo)");
+                        $sending = $request->execute([
+                            ':username' => $_POST['username'],
+                            ':last_name' => $_POST['last_name'],
+                            ':first_name' => $_POST['first_name'],
+                            ':mail' => $_POST['mail'],
+                            ':password' => $crypt_pwd,
+                            ':phone' => $_POST['phone'],
+                            ':photo' => $new_path
+                        ]);
+                    }
+                }
+            }
         }
     }
 }

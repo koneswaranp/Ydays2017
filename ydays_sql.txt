@@ -14,7 +14,6 @@ CREATE TABLE user(
         first_name    Varchar (30) NOT NULL ,
         mail          Varchar (50) NOT NULL ,
         password      Varchar (255) NOT NULL ,
-        type          Varchar (25) ,
         phone         Varchar (15) ,
         profile_photo Varchar (255) ,
         PRIMARY KEY (id_user ) ,
@@ -30,7 +29,7 @@ CREATE TABLE ad(
         id_ad       int (11) Auto_increment  NOT NULL ,
         title       Varchar (50) NOT NULL ,
         ad_date     Datetime NOT NULL ,
-        end_date    Date ,
+        deadline    Date ,
         description Text ,
         id_user     Int NOT NULL ,
         PRIMARY KEY (id_ad )
