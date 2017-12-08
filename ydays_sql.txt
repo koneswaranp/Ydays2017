@@ -1,0 +1,80 @@
+#------------------------------------------------------------
+#        Script MySQL.
+#------------------------------------------------------------
+
+
+#------------------------------------------------------------
+# Table: user
+#------------------------------------------------------------
+
+CREATE TABLE user(
+        id_user       int (11) Auto_increment  NOT NULL ,
+        username      Varchar (25) NOT NULL ,
+        last_name     Varchar (30) NOT NULL ,
+        first_name    Varchar (30) NOT NULL ,
+        mail          Varchar (50) NOT NULL ,
+        password      Varchar (255) NOT NULL ,
+        type          Varchar (25) ,
+        phone         Varchar (15) ,
+        profile_photo Varchar (255) ,
+        PRIMARY KEY (id_user ) ,
+        UNIQUE (username ,mail )
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: ad
+#------------------------------------------------------------
+
+CREATE TABLE ad(
+        id_ad       int (11) Auto_increment  NOT NULL ,
+        title       Varchar (50) NOT NULL ,
+        ad_date     Datetime NOT NULL ,
+        end_date    Date ,
+        description Text ,
+        id_user     Int NOT NULL ,
+        PRIMARY KEY (id_ad )
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: respond
+#------------------------------------------------------------
+
+CREATE TABLE respond(
+        accepted     Bool ,
+        date_respond Datetime NOT NULL ,
+        id_user      Int NOT NULL ,
+        id_ad        Int NOT NULL ,
+        PRIMARY KEY (id_user ,id_ad )
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: save
+#------------------------------------------------------------
+
+CREATE TABLE save(
+        id_user Int NOT NULL ,
+        id_ad   Int NOT NULL ,
+        PRIMARY KEY (id_user ,id_ad )
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: favorite
+#------------------------------------------------------------
+
+CREATE TABLE favorite(
+        id_user   Int NOT NULL ,
+        id_user_1 Int NOT NULL ,
+        PRIMARY KEY (id_user ,id_user_1 )
+)ENGINE=InnoDB;
+
+ALTER TABLE ad ADD CONSTRAINT FK_ad_id_user FOREIGN KEY (id_user) REFERENCES user(id_user);
+ALTER TABLE respond ADD CONSTRAINT FK_respond_id_user FOREIGN KEY (id_user) REFERENCES user(id_user);
+ALTER TABLE respond ADD CONSTRAINT FK_respond_id_ad FOREIGN KEY (id_ad) REFERENCES ad(id_ad);
+ALTER TABLE save ADD CONSTRAINT FK_save_id_user FOREIGN KEY (id_user) REFERENCES user(id_user);
+ALTER TABLE save ADD CONSTRAINT FK_save_id_ad FOREIGN KEY (id_ad) REFERENCES ad(id_ad);
+ALTER TABLE favorite ADD CONSTRAINT FK_favorite_id_user FOREIGN KEY (id_user) REFERENCES user(id_user);
+ALTER TABLE favorite ADD CONSTRAINT FK_favorite_id_user_1 FOREIGN KEY (id_user_1) REFERENCES user(id_user);
