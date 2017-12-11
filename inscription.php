@@ -87,6 +87,8 @@ if ((isset($_POST)) && (!empty($_POST['username'])) && (!empty($_POST['last_name
                             ':phone' => $_POST['phone'],
                             ':photo' => $new_path
                         ]);
+
+                        header('Location: connexion.php');
                     }
                 }
             }

@@ -16,10 +16,11 @@ session_start();
 <?php
 if((isset($_POST)) && (!empty($_POST['title'])) && (!empty($_POST['description']))) {
     $deadline = (isset($_POST['deadline']) && !empty($_POST['deadline'])) ? $_POST['deadline'] : null;
-    $request = $db->prepare("INSERT INTO ad (title, ad_date, deadline, description, id_user) VALUES (:title, NOW(), :deadline, :description, 4)");
+    $request = $db->prepare("INSERT INTO ad (title, ad_date, deadline, description, id_user) VALUES (:title, NOW(), :deadline, :description, :id_user)");
     $request->execute([
         ':title' => $_POST['title'],
         ':deadline' => $deadline,
-        ':description' => $_POST['description']
+        ':description' => $_POST['description'],
+        ':id_user' => $_SESSION['id']
     ]);
 }

@@ -9,6 +9,7 @@ require('includes/init.php');
             <h3>Toutes les annonces</h3>
             <table class="table table-striped table-hover">
                 <tr>
+                    <td><b>Utilisateur</b></td>
                     <td><b>Titre de l'annonce</b></td>
                     <td><b>Deadline</b></td>
                     <td><b>Description</b></td>
@@ -19,9 +20,16 @@ require('includes/init.php');
                 $ads=$req->fetchAll();
                 foreach ($ads as $ad)
                 {
+                    $id = $ad['id_user'];
+                    $req = $db->query("SELECT * FROM user WHERE id_user = $id");
+                    $user=$req->fetch();
+                    ?>
                     ?>
 
                     <tr>
+                        <td>
+                            <?php echo $user['username']; ?>
+                        </td>
                         <td>
                             <?php echo $ad['title']; ?>
                         </td>
