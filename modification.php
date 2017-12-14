@@ -1,5 +1,10 @@
 <?php
+session_start();
 require ('./includes/init.php');
+
+$id = $_SESSION['id'];
+$req = $db->query("SELECT * FROM user WHERE id_user = $id");
+$user = $req->fetch();
 ?>
 
     <!doctype html>
@@ -10,39 +15,63 @@ require ('./includes/init.php');
 </head>
 <body>
 
-<p><a href="">Retour au menu</a></p>
+<p><a href="page_membre.php">Retour</a></p>
 
 <h2>Modifier mon profil</h2>
-<form enctype="multipart/form-data" action="" method="post">
+<form enctype="multipart/form-data" action="" method="post" name="modif">
 
-    <label for="username">Nouveau Pseudo</label><br>
-    <input type="text" name="username" id="username" /><br />
-    <?php if(isset($_POST['username'])){echo $_POST['username'];} ?>
-
-    <label for="last_name">Nouveau Nom</label><br>
-    <input type="text" name="last_name" id="last_name" /><br />
-    <?php if(isset($_POST['last_name'])){echo $_POST['last_name'];} ?>
-
-    <label for="mail">Nouveau adresse mail </label><br>
-    <input type="email" name="mail" id="mail" /><br />
-    <?php if(isset($_POST['mail'])){echo $_POST['mail'];} ?>
+    <label for="username">Pseudo</label><br>
+    <input type="text" name="username" id="username" value="<?php echo $user['username']?>" /><br>
 
 
-    <label for="password">Nouveau mot de Passe </label><br >
-    <input type="password" name="password" id="password" /><br />
-    <label for="confirm">Confirmer le mot de passe :</label><br >
-    <input type="password" name="confirm" id="confirm"  /><br />
+    <label for="last_name">Nom</label><br>
+    <input type="text" name="last_name" id="last_name" value="<?php echo $user['last_name']?>" /><br>
 
-    <label for="phone">Nouveau Telephone</label><br>
-    <input type="text" name="phone" id="phone" /><br />
-    <?php if(isset($_POST['phone'])){echo $_POST['phone'];} ?>
+    <label for="first_name">Prénom</label><br>
+    <input type="text" name="first_name" id="first_name" value="<?php echo $user['first_name']?>" /><br>
 
+    <label for="mail">Mail</label><br>
+    <input type="email" name="mail" id="mail" value="<?php echo $user['mail']?>" /><br>
+
+    <label for="phone">Telephone</label><br>
+    <input type="text" name="phone" id="phone" value="<?php echo $user['phone']?>" /><br>
+
+    <!--<div>
+        <button type="button" id="btnmodif" onclick="enable()">Modifier mon profil </button>
+    </div>!-->
     <br>
+        <input type="submit" value="Envoyer">
 
-    <button type="button">Modifier mon profil </button>
-    <br>
+</form>
+<?php
+if((isset($_POST)) && (!empty($_POST['username']))&& (!empty($_POST['last_name'])) && (!empty($_POST['first_name'])) && (!empty($_POST['mail'])) && (!empty($_POST['phone']))) {
+    $req = $db->prepare("UPDATE user SET username = :username, last_name = :ln, first_name = :fn, mail = :mail, phone = :phone WHERE id_user = $id");
+    $req->execute([
+        ':username' => $_POST['username'],
+        ':ln' => $_POST['last_name'],
+        ':fn' => $_POST['first_name'],
+        'mail' => $_POST['mail'],
+        'phone' => $_POST['phone']
+    ]);
+    header('Location: page_membre.php');
+}
 
-    <p><a href="page_membre.php">Confirmer</a></p>
+?>
+<!--<script type="text/javascript">
+    $('#btnmodif').click(
+        function () {
+            $(this).hide();
+        }
+    )
+    function enable(){
+        document.modif.username.disabled=!document.modif.username.disabled;
+        document.modif.last_name.disabled=!document.modif.last_name.disabled;
+        document.modif.first_name.disabled=!document.modif.first_name.disabled;
+        document.modif.mail.disabled=!document.modif.mail.disabled;
+        document.modif.phone.disabled=!document.modif.phone.disabled;
+
+    }
+</script>!-->
 
 </body>
 </html>
