@@ -18,7 +18,7 @@ include("includes/init.php");
     <input type="password" name="password" id="password" placeholder="password">
     <input type="submit" value="Valider">
 
-    <p><a href="deconnexion.php">Déconnection</a></p>
+    <p><a href="inscription.php"><i>Pas encore inscrit ?</i></a></p>
 </form>
 </body>
 </html>
