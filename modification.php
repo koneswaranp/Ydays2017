@@ -57,21 +57,8 @@ if((isset($_POST)) && (!empty($_POST['username']))&& (!empty($_POST['last_name']
 }
 
 ?>
-<!--<script type="text/javascript">
-    $('#btnmodif').click(
-        function () {
-            $(this).hide();
-        }
-    )
-    function enable(){
-        document.modif.username.disabled=!document.modif.username.disabled;
-        document.modif.last_name.disabled=!document.modif.last_name.disabled;
-        document.modif.first_name.disabled=!document.modif.first_name.disabled;
-        document.modif.mail.disabled=!document.modif.mail.disabled;
-        document.modif.phone.disabled=!document.modif.phone.disabled;
 
-    }
-</script>!-->
+<a href="modification_mdp.php">Modifier mon mot de passe ></a>
 
 </body>
 </html>
