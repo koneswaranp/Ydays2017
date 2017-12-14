@@ -37,7 +37,7 @@ if ((isset($_POST)) && (!empty($_POST['username'])) && (!empty($_POST['password'
     if(count($result) > 0){
         $_SESSION["id"] = $result[0]["id_user"];
         //header location vers accueil ou page membre
-        header('Location: index.php');
+        header('Location: page.membre.php');
     }
     else {
         echo "connexion impossible, veuillez réessayer";
