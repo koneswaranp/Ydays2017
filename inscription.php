@@ -25,7 +25,9 @@ require ('./includes/init.php');
     <input type="file" name="photo"><br><br>
 
 
-    <input type="submit" content="S'inscrire">
+    <input type="submit" content="S'inscrire"><br>
+
+    <a href="connexion.php"><i>Déjà inscrit ?</i></a>
 </form>
 
 <?php
