@@ -67,7 +67,7 @@ $user = $req->fetch();
     <?php
         if($user['profile_photo']) {
             ?>
-            <img src="../<?php echo $user['profile_photo']; ?>" alt="photo_profil">
+            <img src="../<?php echo $user['profile_photo']; ?>" alt="photo_profil" height="150">
         <?php
         }
         else {

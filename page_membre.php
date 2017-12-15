@@ -113,9 +113,9 @@ $user = $req->fetch();
                         <a href="form_accept.php">Répondre</a>
                         <?php
                     } elseif ($re['accepted'] == 'true') {
-                        echo "Nom de votre correspondant : " . $user['first_name'] . " " . $user['last_name'];
-                        echo "Numéro de téléphone : " . $user['phone'];
-                        echo "Adresse mail : " . $user['mail'];
+                        echo "<b>Nom de votre correspondant : </b>" . $user['first_name'] . " " . $user['last_name'] . "<br>";
+                        echo "<b>Numéro de téléphone : </b>" . $user['phone'] . "<br>";
+                        echo "<b>Adresse mail :</b> " . $user['mail'];
                     } else {
                         echo "Vous avez refusé cette proposition";
                     }

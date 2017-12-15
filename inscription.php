@@ -108,7 +108,7 @@ else {
 
 
                                 //Envoi des données en bdd
-                                $request = $db->prepare("INSERT INTO USER VALUES (NULL, :username, :last_name, :first_name, :mail, :password,
+                                $request = $db->prepare("INSERT INTO USER (username, last_name, first_name, mail, password, phone, profile_photo) VALUES (:username, :last_name, :first_name, :mail, :password,
                                             :phone, :photo)");
                                 $sending = $request->execute([
                                     ':username' => $_POST['username'],
@@ -119,7 +119,7 @@ else {
                                     ':phone' => $_POST['phone'],
                                     ':photo' => $new_path
                                 ]);
-
+                                //print_r($request->errorInfo());
                                 header('Location: connexion.php');
                             }
                         }

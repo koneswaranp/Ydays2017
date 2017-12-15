@@ -76,19 +76,17 @@ span.label_profil {
 
 #pdp {
     text-align: center;
+    margin-right: 2vw;
+
 }
 div#pdp img{
     text-align: center;
     border-radius: 5px;
-    /*text-align: center;
-    width: 150px;
-    height: 200px;
-    position: center;*/
+    /*position: center;*/
     /*padding: 10px;
     margin: auto;
     */
-    margin: auto;
-    padding: auto;
+    margin-top: 3vh;
     border: 3px solid #60baef;
     -moz-border-radius: 7px;
     -webkit-border-radius: 7px;
@@ -106,7 +104,7 @@ div#pdp img{
     margin: auto;
     padding: auto;
     width: 97%;
-    height: 400px;
+    height: 270px;
     background-color: #BABABA;
 }
 
