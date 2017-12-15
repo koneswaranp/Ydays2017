@@ -13,6 +13,7 @@ body {
     width: 100%;
     background: #404040;
     margin-top: 0;
+    opacity: 0.9;
     z-index: 2;
     color: #eeeeee;
 
@@ -51,15 +52,35 @@ a:hover {
     text-decoration: none;
     color: #1da1f2;
 }
+/*ACCUEIL VISITEUR*/
+.publish p {
+    text-align: justify;
+    padding: 2vh 2vw;
+}
+
 
 /*PUBLICATION*/
 .publish {
     text-align: center;
     background: white;
-    margin-top: 12vh;
     margin-bottom: 7vh;
+    margin-top: 15vh;
     border-radius: 8px;
     opacity: 0.9;
+}
+
+.signup {
+    margin-top: 0;
+    padding-bottom: 5px;
+}
+
+.signup a{
+    color: #404040;
+}
+
+.signup a:hover {
+    text-decoration: none;
+    color: #1da1f2;
 }
 
 form {
@@ -115,20 +136,47 @@ form input {
 
 
 /*PAGE MON COMPTE*/
-.user {
-    text-align: center;
-    font-size: 1.5em;
-    font-weight: 700;
-    margin-bottom: 3vh;
+
+.menu_membre, .content_membre {
+    margin-top: 14vh;
+}
+.menu_membre {
+    background: #404040;
+    font-size: 0.9em;
+    padding: 1vh 1vw;
+}
+.menu_membre ul {
+    padding-left: 0;
+
+}
+.menu_membre li{
+    list-style-type: none;
+    display: block;
+    padding: 2vh 0 2vh 1vw;
+    border-bottom: 1px solid black;
 }
 
+.content_membre {
+    text-align: center;
+    border-radius: 0;
+}
 
+.content_membre a{
+    color: #404040;
+}
+
+.content_membre a:hover {
+    text-decoration: none;
+    color: #1da1f2;
+}
 /*CONNEXION*/
 .form {
+    margin-top: 12vh;
     background: #ffffff;
     border-radius: 8px;
     padding: 1vh 2vw 2vh;
     text-align: center;
+    opacity: 0.9;
 }
 
 .form label,.form h3, .btn, li {
@@ -141,14 +189,25 @@ form input {
 
 .form a {
     font-style: italic;
+    color: #404040;
+}
+
+.form a:hover {
+    text-decoration: none;
+    color: #1da1f2;
 }
 
 .form input{
     border-radius: 8px;
+    margin: auto;
 
 }
 .form input:focus{
     border: solid 2px #1da1f2;
+}
+
+.connexion {
+    margin-top: 40vh;
 }
 
 /*FOOTER*/

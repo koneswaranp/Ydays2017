@@ -10,7 +10,7 @@
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
           crossorigin="anonymous">
     <link rel="stylesheet" href="./CSS/header.css">
-    <title>Accueil</title>
+    <title>Devonation</title>
 </head>
 <body>
 <?php require('includes/header.php');
@@ -110,6 +110,32 @@ if (isset($_SESSION['id'])) {
     </div>
     <?php
 } else {
+    ?>
+<div class="row">
+    <div class="publish col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+    <h2>Bienvenue sur DevoNation</h2>
+        <h3>Qui sommes-nous ?</h3>
+        <p>
+            Créée en 2017 par une équipe de trois étudiantes de l'école Ynov Informatique Ingésup, DevoNation est une plateforme permettant de mettre en relations des clients et des développeurs.
+            Vous chercher à réaliser une application mobile, un site web ou encore un logiciel ? DevoNation vous met en relation avec des développeurs prêts à vous aider à concrétiser votre projet.
+            Inscrivez vous dès maintenant pour rencontrer votre future équipe.
+        </p>
+    </div>
+</div>
+<div class="row">
+    <div class="signup publish col-xs-4 col-xs-offset-4 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
+    <h3>
+        <a href="inscription.php">
+            Inscrivez vous dès maintenant !
+        </a>
+    </h3>
 
+    </div>
+</div>
+
+
+
+
+    <?php
 }
 require('includes/footer.html');

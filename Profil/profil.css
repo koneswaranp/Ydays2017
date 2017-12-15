@@ -1,11 +1,49 @@
 /*PROFIL (THANU)*/
+/* NAVBAR */
+.navbar {
+    position: fixed;
+    width: 100%;
+    background: #404040;
+    margin-top: 0;
+    opacity: 0.9;
+    z-index: 2;
+    color: #eeeeee;
 
+}
+.title h3{
+    border: solid 2px #eeeeee;
+    border-radius: 5px;
+    text-align: center;
+    padding: 1vh 1vw;
+}
+
+
+.link {
+    margin-top: 5vh;
+}
+
+.link li {
+    list-style-type: none;
+    display:  inline-block;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding-right: 2vw;
+}
+
+.link .barre {
+    color: #1da1f2;
+}
+
+a {
+    text-decoration: none;
+    color: #eeeeee;
+    font-size: 1.2em;
+}
 
 body {
-    background-color: #CDCECE;
-    /*margin: auto;
-    padding: auto;*/
+    background-image: url(../img/christmas-dark.png);
 }
+
 
 h1 {
 
@@ -36,15 +74,16 @@ span.label_profil {
     font-weight: bold;
 }
 
-div#pdp {
-    background-image: url(../includes/logo.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+#pdp {
     text-align: center;
+}
+div#pdp img{
+    text-align: center;
+    border-radius: 5px;
+    /*text-align: center;
     width: 150px;
     height: 200px;
-    position: center;
+    position: center;*/
     /*padding: 10px;
     margin: auto;
     */
@@ -57,7 +96,13 @@ div#pdp {
     border-style: groove;
 }
 
+.vide {
+    height: 10vh;
+    width: 100%;
+}
+
 .cover {
+    margin-top: 10vh;
     margin: auto;
     padding: auto;
     width: 97%;
@@ -66,11 +111,11 @@ div#pdp {
 }
 
 .cvr {
+    background-image: url('../img/darkness.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     position: center;
-    background-image: url(../includes/2%20rules%20of%20life.png);
     /* margin: 50px; */
     /* margin: auto; */
     padding: auto;
@@ -97,7 +142,9 @@ div#pdp {
     padding: auto;
     width: 95%;
     padding: 1%;
+    text-align: center;
 }
+
 
 .description {
     background-color: #c1bdc4;
@@ -106,6 +153,7 @@ div#pdp {
     padding: 5%;
     text-align: justify;
     font-size: 1.5em;
+    text-align: center;
 }
 
 
@@ -114,4 +162,11 @@ div#pdp {
     padding: auto;
     text-align: center;
     
+}
+
+
+
+a:hover {
+    text-decoration: none;
+    color: #1da1f2;
 }
