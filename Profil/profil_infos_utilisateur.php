@@ -54,7 +54,7 @@ require ('../includes/init.php');
     </div>
 </nav>
 <?php
-$id = $_SESSION['id'];
+$id = $_GET['id_user'];
 $req = $db->query("SELECT * FROM user WHERE id_user = $id");
 $user = $req->fetch();
 ?>

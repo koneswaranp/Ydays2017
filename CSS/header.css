@@ -129,6 +129,14 @@ form input {
     opacity: 0.9;
     margin-bottom: 8vh;
 }
+.ads a {
+    color: #404040;
+}
+
+.ads a:hover {
+    text-decoration: none;
+    color: #1da1f2;
+}
 
 .ads h3, .entete {
     text-align: center;

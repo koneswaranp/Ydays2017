@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="fr">
 <head>
@@ -68,7 +67,9 @@ if (isset($_SESSION['id'])) {
                             ?>
                             <tr>
                                 <td>
+                                    <a href="Profil/profil_infos_utilisateur.php?id_user=<?php echo $ad['id_user']?>" class="dark_link">
                                     <?php echo $user['username']; ?>
+                                    </a>
                                 </td>
                                 <td>
                                     <?php echo $ad['title']; ?>
@@ -87,9 +88,11 @@ if (isset($_SESSION['id'])) {
                                     <?php
                                     if ($_SESSION['id'] != $id) {
                                         ?>
-                                        <form action="" method="post">
+                                        <!--<form action="" method="post">
                                             <input type="submit" name="rep" value="Répondre" class="btn">
-                                        </form>
+                                        </form>!-->
+                                        <a href="form_response.php?id=<?php echo $ad['id_ad']?>" class="dark_link">Répondre</a>
+
                                         <?php
                                     }
                                     ?>
@@ -97,11 +100,11 @@ if (isset($_SESSION['id'])) {
                             </tr>
 
                             <?php
-                            if (isset($_POST['rep'])) {
+                            /*if (isset($_POST['rep'])) {
                                 $_SESSION['id_ad'] = $ad['id_ad'];
                                 $_SESSION['id_client'] = $user['id_user'];
                                 header('Location: form_response.php');
-                            }
+                            }*/
                         }
                         ?>
                     </table>

@@ -22,21 +22,22 @@ if (isset($_SESSION['id'])) {
 
     <h3>Répondre à l'annonce :</h3>
     <?php
-    $id = $_SESSION['id_ad'];
+    $id = $_GET['id'];
     $req = $db->query("SELECT * FROM ad WHERE id_ad = $id");
     $ad = $req->fetch();
     ?>
-    <h4>Titre de l'annonce :
+    <h4><b>Titre de l'annonce :</b>
         <?php
         echo $ad['title'];
         ?>
     </h4>
     <h5>
-        Date limite :
+        <i>Date limite :
 
         <?php
         echo $ad['ad_date'];
         ?>
+        </i>
     </h5>
     <p>
         <b>Description :</b>
