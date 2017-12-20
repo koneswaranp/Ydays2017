@@ -39,20 +39,19 @@ echo $id_ad;
 <?php
 
 if (isset($_POST['valid']) && ($_POST['accept'] != "1")) {
-    if ($_POST['accept'] = "2") {
+    if ($_POST['accept'] == "2") {
         $req = $db->prepare("UPDATE response SET accepted = 'true', comments = :comments WHERE id_ad = $id_ad");
         $req->execute([
             ':comments' => $_POST['comments']
         ]);
         //print_r($req->errorInfo());
         header('Location:page_membre.php');
-    } else {
+    } elseif ($_POST['accept'] == "3") {
         $req = $db->prepare("UPDATE response SET accepted = 'false', comments = :comments WHERE id_ad = $id_ad");
         $req->execute([
             ':comments' => $_POST['comments']
         ]);
         header('Location:page_membre.php');
-
     }
 }
 ?>

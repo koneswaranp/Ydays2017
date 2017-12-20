@@ -107,6 +107,7 @@ $user = $req->fetch();
                 </td>
                 <td>
                     <?php
+                    var_dump($re['accepted']);
                     if (!$re['accepted']) {
                         $_SESSION['id_ad'] = $re['id_ad'];
                         ?>
@@ -171,7 +172,7 @@ $user = $req->fetch();
                         echo "<b>Numéro de téléphone : </b>" . $user['phone'] . "<br>";
                         echo "<b>Adresse mail :</b> " . $user['mail'];
                     } elseif ($re['accepted'] == 'false') {
-                        echo "Offre refusée";
+                        echo "Offre refusée" . "<br>";
                         if ($re['comments']) {
                             echo $re['comments'];
                         } else {
