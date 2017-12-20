@@ -22,7 +22,6 @@ if (isset($_SESSION['id'])) {
 
     <h3>Répondre à l'annonce :</h3>
     <?php
-    var_dump($_SESSION);
     $id = $_GET['id'];
     $req = $db->query("SELECT * FROM ad WHERE id_ad = $id");
     $ad = $req->fetch();
@@ -63,6 +62,7 @@ if (isset($_SESSION['id'])) {
             ':id_dev' => $_SESSION['id'],
             ':id_ad' => $id
         ]);
+        header('Location: index.php');
     }
 } else {
     header('Location: connexion.php');
