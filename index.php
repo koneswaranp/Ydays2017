@@ -62,8 +62,8 @@ if (isset($_SESSION['id'])) {
                         $req = $db->query("SELECT * FROM ad ORDER BY ad_date desc");
                         $ads = $req->fetchAll();
                         foreach ($ads as $ad) {
-                            $id = $ad['id_user'];
-                            $req = $db->query("SELECT * FROM user WHERE id_user = $id");
+                            $id_user = $ad['id_user'];
+                            $req = $db->query("SELECT * FROM user WHERE id_user = $id_user");
                             $user = $req->fetch();
                             ?>
                             <tr>
@@ -87,12 +87,19 @@ if (isset($_SESSION['id'])) {
                                 </td>
                                 <td class="entete">
                                     <?php
-                                    if ($_SESSION['id'] != $id) {
+                                    $id = $_SESSION['id'];
+                                    $id_ad = $ad['id_ad'];
+                                    $req = $db->query("SELECT * FROM response WHERE id_dev = $id AND id_ad = $id_ad");
+                                    $res = $req->fetchAll();
+                                    if (($id != $id_user) && (empty($res))) {
                                         ?>
 
                                         <a href="form_response.php?id=<?php echo $ad['id_ad']?>" class="dark_link">Répondre</a>
 
                                         <?php
+                                    }
+                                    elseif(!empty($res)) {
+                                        echo "Vous avez déjà répondu à cette annonce.";
                                     }
                                     ?>
                                 </td>
