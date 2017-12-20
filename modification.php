@@ -52,8 +52,9 @@ $user = $req->fetch();
                 <input type="text" name="perso" id="perso" value="<?php echo $user['perso'] ?>" /><br>
 
                 <label for="description">Description</label><br>
-                <input type="text" name="description" id="description" value="<?php echo $user['description'] ?>" /><br>
+                <textarea name="description" id="description" rows="10" cols="50" value=" <?php echo $user['description'] ?>" />
 
+                <br>
                 <!--<div>
                 <button type="button" id="btnmodif" onclick="enable()">Modifier mon profil </button>
             </div>!-->
