@@ -24,7 +24,7 @@ $user = $req->fetch();
 <div class="menu_membre col-xs-2 col-sm-2 col-md-2 col-lg-2">
     <ul>
         <li><a href="modification.php">Modifier mon profil</a></li>
-        <li><a href="./profil/profil_infos_utilisateur.php">Voir mon profil</a></li>
+        <li><a href="./profil/profil_infos_utilisateur.php?id_user=<?php echo $id; ?>">Voir mon profil</a></li>
     </ul>
 </div>
 <div class="ads content_membre col-xs-10 col-sm-10 col-md-10 col-lg-10">
@@ -85,8 +85,8 @@ $user = $req->fetch();
         $req = $db->query("SELECT * FROM response WHERE id_client = $id");
         $res = $req->fetchAll();
         foreach ($res as $re) {
-            $id = $re['id_dev'];
-            $req = $db->query("SELECT * FROM user WHERE id_user = $id");
+            $id_dev = $re['id_dev'];
+            $req = $db->query("SELECT * FROM user WHERE id_user = $id_dev");
             $user = $req->fetch();
             ?>
 
@@ -143,8 +143,8 @@ $user = $req->fetch();
         $req = $db->query("SELECT * FROM response WHERE id_dev = $id");
         $res = $req->fetchAll();
         foreach ($res as $re) {
-            $id = $re['id_client'];
-            $req = $db->query("SELECT * FROM user WHERE id_user = $id");
+            $id_client = $re['id_client'];
+            $req = $db->query("SELECT * FROM user WHERE id_user = $id_client");
             $user = $req->fetch();
             ?>
 

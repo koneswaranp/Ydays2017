@@ -22,6 +22,7 @@ if (isset($_SESSION['id'])) {
 
     <h3>Répondre à l'annonce :</h3>
     <?php
+    var_dump($_SESSION);
     $id = $_GET['id'];
     $req = $db->query("SELECT * FROM ad WHERE id_ad = $id");
     $ad = $req->fetch();
@@ -58,7 +59,7 @@ if (isset($_SESSION['id'])) {
         $req = $db->prepare("INSERT INTO response (date_response, response, id_client, id_dev, id_ad) VALUES (NOW(), :response, :id_client, :id_dev, :id_ad)");
         $req->execute([
            ':response' => $_POST['reponse'],
-            ':id_client' => $_SESSION['id_client'],
+            ':id_client' => $ad['id_user'],
             ':id_dev' => $_SESSION['id'],
             ':id_ad' => $id
         ]);
