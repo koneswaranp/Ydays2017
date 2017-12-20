@@ -20,7 +20,7 @@ $user = $req->fetch();
 ?>
 <div class="row">
     <div class="form col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
-        <p><a href="page_membre.php">< Retour</a></p>
+        <p><a href="page_membre.php">< Retour </a></p>
 
         <h2>Modifier mon profil</h2>
         <form enctype="multipart/form-data" action="" method="post" name="modif">
@@ -40,7 +40,17 @@ $user = $req->fetch();
 
             <label for="phone">Telephone</label><br>
             <input type="text" name="phone" id="phone" value="<?php echo $user['phone'] ?>"/><br>
-
+            
+            <label for="github">Github</label><br>
+            <input type="text" name="github" id="github" value="<?php echo $user['github'] ?>"/><br>
+            
+            <label for="linkedin">Linkedin</label><br>
+            <input type="text" name="linkedin" id="linkedin" value="<?php echo $user['linkedin'] ?>"/><br>
+            
+            <label for="perso">Site Personnel</label><br>
+            <input type="text" name="perso" id="perso" value="<?php echo $user['perso'] ?>"/><br>
+            
+            
             <!--<div>
                 <button type="button" id="btnmodif" onclick="enable()">Modifier mon profil </button>
             </div>!-->
