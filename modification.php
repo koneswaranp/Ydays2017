@@ -52,7 +52,7 @@ $user = $req->fetch();
                 <input type="text" name="perso" id="perso" value="<?php echo $user['perso'] ?>" /><br>
 
                 <label for="description">Description</label><br>
-                <textarea name="description" id="description" rows="10" cols="50" value=" <?php echo $user['description'] ?>" />
+                <textarea name="description" id="description" rows="10" cols="50"><?php echo $user['description'] ?></textarea>
 
                 <br>
                 <!--<div>
