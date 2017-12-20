@@ -28,7 +28,6 @@ $user = $req->fetch();
             <label for="username">Pseudo</label><br>
             <input type="text" name="username" id="username" value="<?php echo $user['username'] ?>"/><br>
 
-
             <label for="last_name">Nom</label><br>
             <input type="text" name="last_name" id="last_name" value="<?php echo $user['last_name'] ?>"/><br>
 
@@ -50,6 +49,8 @@ $user = $req->fetch();
             <label for="perso">Site Personnel</label><br>
             <input type="text" name="perso" id="perso" value="<?php echo $user['perso'] ?>"/><br>
             
+            <label for="description">Description</label><br>
+            <input type="text" name="description" id="description" value="<?php echo $user['description'] ?>"/><br>
             
             <!--<div>
                 <button type="button" id="btnmodif" onclick="enable()">Modifier mon profil </button>
