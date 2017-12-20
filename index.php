@@ -59,7 +59,7 @@ if (isset($_SESSION['id'])) {
                         </tr>
                         <?php
 
-                        $req = $db->query("SELECT * FROM ad");
+                        $req = $db->query("SELECT * FROM ad ORDER BY ad_date desc");
                         $ads = $req->fetchAll();
                         foreach ($ads as $ad) {
                             $id = $ad['id_user'];
@@ -89,9 +89,7 @@ if (isset($_SESSION['id'])) {
                                     <?php
                                     if ($_SESSION['id'] != $id) {
                                         ?>
-                                        <!--<form action="" method="post">
-                                            <input type="submit" name="rep" value="Répondre" class="btn">
-                                        </form>!-->
+
                                         <a href="form_response.php?id=<?php echo $ad['id_ad']?>" class="dark_link">Répondre</a>
 
                                         <?php
@@ -101,11 +99,6 @@ if (isset($_SESSION['id'])) {
                             </tr>
 
                             <?php
-                            /*if (isset($_POST['rep'])) {
-                                $_SESSION['id_ad'] = $ad['id_ad'];
-                                $_SESSION['id_client'] = $user['id_user'];
-                                header('Location: form_response.php');
-                            }*/
                         }
                         ?>
                     </table>

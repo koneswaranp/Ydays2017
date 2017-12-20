@@ -20,178 +20,215 @@ $req = $db->query("SELECT * FROM user WHERE id_user = $id");
 $user = $req->fetch();
 ?>
 <div class="container">
-<div class="row">
-<div class="menu_membre col-xs-2 col-sm-2 col-md-2 col-lg-2">
-    <ul>
-        <li><a href="modification.php">Modifier mon profil</a></li>
-        <li><a href="./profil/profil_infos_utilisateur.php?id_user=<?php echo $id; ?>">Voir mon profil</a></li>
-    </ul>
-</div>
-<div class="ads content_membre col-xs-10 col-sm-10 col-md-10 col-lg-10">
-    <h1>Bienvenue dans votre espace membre,
-        <?php
-        echo $user['first_name'] . ".";
-        ?>
-    </h1>
-    <br>
-    <h3>Vos annonces</h3>
-    <table class="table table-striped table-hover">
-        <tr>
-            <td><b>Numéro de l'annonce</b></td>
-            <td><b>Titre de l'annonce</b></td>
-            <td><b>Deadline</b></td>
-            <td><b>Description</b></td>
-        </tr>
-        <?php
+    <div class="row">
+        <div class="menu_membre col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <ul>
+                <li><a href="modification.php">Modifier mon profil</a></li>
+                <li><a href="./profil/profil_infos_utilisateur.php?id_user=<?php echo $id; ?>">Voir mon profil</a></li>
+            </ul>
+        </div>
+        <div class="ads content_membre col-xs-10 col-sm-10 col-md-10 col-lg-10">
+            <h1>Bienvenue dans votre espace membre,
+                <?php
+                echo $user['first_name'] . ".";
+                ?>
+            </h1>
+            <br>
+            <h3>Vos annonces</h3>
 
-        $req = $db->query("SELECT * FROM ad WHERE id_user = $id");
-        $ads = $req->fetchAll();
-        foreach ($ads as $ad) {
-            ?>
-            <tr>
-                <td>
-                    <?php echo $ad['id_ad']; ?>
-                </td>
-                <td>
-                    <?php echo $ad['title']; ?>
-                </td>
-                <td>
-                    <?php
-                    if (isset($ad['deadline'])) {
-                        echo $ad['deadline'];
-                    }
-                    ?>
-                </td>
-                <td>
-                    <?php echo $ad['description']; ?>
-                </td>
-            </tr>
             <?php
-        }
-        ?>
-    </table>
-    <h3>Réponses à vos annonces</h3>
-    <table class="table table-striped table-hover">
-        <tr>
-            <td><b>Numéro de l'annonce</b></td>
-            <td><b>Date</b></td>
-            <td><b>Pseudo</b></td>
-            <td><b>Description</b></td>
-            <td><b>Répondre</b></td>
+            $req = $db->query("SELECT * FROM ad WHERE id_user = $id");
+            $ads = $req->fetchAll();
 
-        </tr>
-        <?php
-
-        $req = $db->query("SELECT * FROM response WHERE id_client = $id");
-        $res = $req->fetchAll();
-        foreach ($res as $re) {
-            $id_dev = $re['id_dev'];
-            $req = $db->query("SELECT * FROM user WHERE id_user = $id_dev");
-            $user = $req->fetch();
-            ?>
-
-            <tr>
-                <td>
-                    <?php echo $re['id_ad']; ?>
-                </td>
-                <td>
+            if (!empty($ads)) {
+                ?>
+                <table class="table table-striped table-hover">
+                    <tr>
+                        <td><b>Numéro de l'annonce</b></td>
+                        <td><b>Titre de l'annonce</b></td>
+                        <td><b>Deadline</b></td>
+                        <td><b>Description</b></td>
+                    </tr>
                     <?php
-                    echo $re['date_response']
-                    ?>
-                </td>
-                <td>
-                    <?php echo $user['username']; ?>
-                </td>
-                <td>
-                    <?php echo $re['response'] ?>
-                </td>
-                <td>
-                    <?php
-                    var_dump($re['accepted']);
-                    if (!$re['accepted']) {
-                        $_SESSION['id_ad'] = $re['id_ad'];
+                    foreach ($ads as $ad) {
                         ?>
-                        <a href="form_accept.php">Répondre</a>
+                        <tr>
+                            <td>
+                                <?php echo $ad['id_ad']; ?>
+                            </td>
+                            <td>
+                                <?php echo $ad['title']; ?>
+                            </td>
+                            <td>
+                                <?php
+                                if (isset($ad['deadline'])) {
+                                    echo $ad['deadline'];
+                                }
+                                ?>
+                            </td>
+                            <td>
+                                <?php echo $ad['description']; ?>
+                            </td>
+                        </tr>
                         <?php
-                    } elseif ($re['accepted'] == 'true') {
-                        echo "<b>Nom de votre correspondant : </b>" . $user['first_name'] . " " . $user['last_name'] . "<br>";
-                        echo "<b>Numéro de téléphone : </b>" . $user['phone'] . "<br>";
-                        echo "<b>Adresse mail :</b> " . $user['mail'];
-                    } else {
-                        echo "Vous avez refusé cette proposition";
                     }
                     ?>
+                </table>
+                <?php
+            } else {
+                ?>
+                <tr>
+                    <i>Cette section est vide.</i>
+                </tr>
+                <?php
+            }
 
-                </td>
-            </tr>
-
-            <?php
-        }
-        ?>
-    </table>
-
-    <h3>Annonces auxquels vous avez répondu</h3>
-    <table class="table table-striped table-hover">
-        <tr>
-            <td><b>Numéro de l'annonce</b></td>
-            <td><b>Date</b></td>
-            <td><b>Pseudo</b></td>
-            <td><b>Description</b></td>
-            <td><b>Réponse</b></td>
-        </tr>
-        <?php
-
-        $req = $db->query("SELECT * FROM response WHERE id_dev = $id");
-        $res = $req->fetchAll();
-        foreach ($res as $re) {
-            $id_client = $re['id_client'];
-            $req = $db->query("SELECT * FROM user WHERE id_user = $id_client");
-            $user = $req->fetch();
             ?>
 
-            <tr>
-                <td>
-                    <?php echo $re['id_ad']; ?>
-                </td>
-                <td>
-                    <?php
-                    echo $re['date_response']
-                    ?>
-                </td>
-                <td>
-                    <?php echo $user['username']; ?>
-                </td>
-                <td>
-                    <?php echo $re['response'] ?>
-                </td>
-                <td>
-                    <?php
-                    if ($re['accepted'] == 'true') {
-                        echo "Offre acceptée" . "<br>";
-                        echo "<b>Nom de votre correspondant : </b>" . $user['first_name'] . " " . $user['last_name'] . "<br>";
-                        echo "<b>Numéro de téléphone : </b>" . $user['phone'] . "<br>";
-                        echo "<b>Adresse mail :</b> " . $user['mail'];
-                    } elseif ($re['accepted'] == 'false') {
-                        echo "Offre refusée" . "<br>";
-                        if ($re['comments']) {
-                            echo $re['comments'];
-                        } else {
-                            echo "Pas de commentaire";
-                        }
-                    } else {
-                        echo "Offre en attente";
-                    }
-                    ?>
-
-                </td>
-            </tr>
+            <h3>Réponses à vos annonces</h3>
 
             <?php
-        }
-        ?>
-    </table>
-</div>
-</div>
+
+            $req = $db->query("SELECT * FROM response WHERE id_client = $id");
+            $res = $req->fetchAll();
+            if (!empty($res)) {
+                ?>
+                <table class="table table-striped table-hover">
+                    <tr>
+                        <td><b>Numéro de l'annonce</b></td>
+                        <td><b>Date</b></td>
+                        <td><b>Pseudo</b></td>
+                        <td><b>Description</b></td>
+                        <td><b>Répondre</b></td>
+                    </tr>
+                    <?php
+                    foreach ($res as $re) {
+                        $id_dev = $re['id_dev'];
+                        $req = $db->query("SELECT * FROM user WHERE id_user = $id_dev");
+                        $user = $req->fetch();
+                        ?>
+
+                        <tr>
+                            <td>
+                                <?php echo $re['id_ad']; ?>
+                            </td>
+                            <td>
+                                <?php
+                                echo $re['date_response']
+                                ?>
+                            </td>
+                            <td>
+                                <?php echo $user['username']; ?>
+                            </td>
+                            <td>
+                                <?php echo $re['response'] ?>
+                            </td>
+                            <td>
+                                <?php
+                                if (!$re['accepted']) {
+                                    $_SESSION['id_ad'] = $re['id_ad'];
+                                    ?>
+                                    <a href="form_accept.php">Répondre</a>
+                                    <?php
+                                } elseif ($re['accepted'] == 'true') {
+                                    echo "<b>Nom de votre correspondant : </b>" . $user['first_name'] . " " . $user['last_name'] . "<br>";
+                                    echo "<b>Numéro de téléphone : </b>" . $user['phone'] . "<br>";
+                                    echo "<b>Adresse mail :</b> " . $user['mail'];
+                                } else {
+                                    echo "Vous avez refusé cette proposition";
+                                }
+                                ?>
+
+                            </td>
+                        </tr>
+
+                        <?php
+                    }
+                    ?>
+                </table>
+                <?php
+            } else {
+                ?>
+                <i>Cette section est vide.</i>
+                <?php
+            }
+            ?>
+
+            <h3>Annonces auxquels vous avez répondu</h3>
+
+            <?php
+
+            $req = $db->query("SELECT * FROM response WHERE id_dev = $id");
+            $res = $req->fetchAll();
+            if (!empty($res)) {
+                ?>
+
+                <table class="table table-striped table-hover">
+                    <tr>
+                        <td><b>Numéro de l'annonce</b></td>
+                        <td><b>Date</b></td>
+                        <td><b>Pseudo</b></td>
+                        <td><b>Description</b></td>
+                        <td><b>Réponse</b></td>
+                    </tr>
+                    <?php
+                    foreach ($res as $re) {
+                        $id_client = $re['id_client'];
+                        $req = $db->query("SELECT * FROM user WHERE id_user = $id_client");
+                        $user = $req->fetch();
+                        ?>
+
+                        <tr>
+                            <td>
+                                <?php echo $re['id_ad']; ?>
+                            </td>
+                            <td>
+                                <?php
+                                echo $re['date_response']
+                                ?>
+                            </td>
+                            <td>
+                                <?php echo $user['username']; ?>
+                            </td>
+                            <td>
+                                <?php echo $re['response'] ?>
+                            </td>
+                            <td>
+                                <?php
+                                if ($re['accepted'] == 'true') {
+                                    echo "Offre acceptée" . "<br>";
+                                    echo "<b>Nom de votre correspondant : </b>" . $user['first_name'] . " " . $user['last_name'] . "<br>";
+                                    echo "<b>Numéro de téléphone : </b>" . $user['phone'] . "<br>";
+                                    echo "<b>Adresse mail :</b> " . $user['mail'];
+                                } elseif ($re['accepted'] == 'false') {
+                                    echo "Offre refusée" . "<br>";
+                                    if ($re['comments']) {
+                                        echo $re['comments'];
+                                    } else {
+                                        echo "Pas de commentaire";
+                                    }
+                                } else {
+                                    echo "Offre en attente";
+                                }
+                                ?>
+
+                            </td>
+                        </tr>
+
+                        <?php
+                    }
+                    ?>
+                </table>
+                <?php
+            } else {
+                ?>
+                <i>Cette section est vide.</i>
+                <?php
+            }
+
+            ?>
+        </div>
+    </div>
 </div>
 
 <?php
