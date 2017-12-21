@@ -53,9 +53,7 @@ if (isset($_SESSION['id'])) {
                         <tr class="entete">
                             <td><b>Utilisateur</b></td>
                             <td><b>Titre de l'annonce</b></td>
-                            <td><b>Deadline</b></td>
-                            <td><b>Description</b></td>
-                            <td><b>Répondre</b></td>
+                            <td><b>Date de mise en ligne</b></td>
                         </tr>
                         <?php
 
@@ -73,33 +71,17 @@ if (isset($_SESSION['id'])) {
                                     </a>
                                 </td>
                                 <td>
+                                    <a href="annonce.php?id_ad=<?php echo $ad['id_ad']?>" class="dark_link">
                                     <?php echo $ad['title']; ?>
+                                    </a>
                                 </td>
                                 <td>
                                     <?php
-                                    if (isset($ad['deadline'])) {
-                                        echo $ad['deadline'];
-                                    }
-                                    ?>
-                                </td>
-                                <td>
-                                    <?php echo $ad['description']; ?>
-                                </td>
-                                <td class="entete">
-                                    <?php
-                                    $id = $_SESSION['id'];
-                                    $id_ad = $ad['id_ad'];
-                                    $req = $db->query("SELECT * FROM response WHERE id_dev = $id AND id_ad = $id_ad");
-                                    $res = $req->fetchAll();
-                                    if (($id != $id_user) && (empty($res))) {
-                                        ?>
-
-                                        <a href="form_response.php?id=<?php echo $ad['id_ad']?>" class="dark_link">Répondre</a>
-
-                                        <?php
-                                    }
-                                    elseif(!empty($res)) {
-                                        echo "Vous avez déjà répondu à cette annonce.";
+                                    if (isset($ad['ad_date'])) {
+                                        $array = explode(" ", $ad['ad_date']);
+                                        $date = explode("-",$array[0]);
+                                        $new_date = "$date[2]-$date[1]-$date[0]";
+                                        echo $new_date;
                                     }
                                     ?>
                                 </td>
