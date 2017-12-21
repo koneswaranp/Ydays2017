@@ -226,6 +226,71 @@ $user = $req->fetch();
                 <?php
             }
 
+            ?><h3>Vos enregistrements</h3>
+
+            <?php
+
+            $req = $db->query("SELECT * FROM save WHERE id_user = $id");
+            $res = $req->fetchAll();
+            if (!empty($res)) {
+                ?>
+
+                <table class="table table-striped table-hover">
+
+                    <tr class="entete">
+                        <td><b>Utilisateur</b></td>
+                        <td><b>Titre de l'annonce</b></td>
+                        <td><b>Date de mise en ligne</b></td>
+                    </tr>
+
+                    <?php
+
+                    $req = $db->query("SELECT * FROM save WHERE id_user = $id");
+                    $saves = $req->fetchAll();
+                    foreach ($saves as $save) {
+                        $id_ad = $save['id_ad'];
+                        $req = $db->query("SELECT * FROM ad WHERE id_ad = $id_ad");
+                        $ad = $req->fetch();
+
+                        $id_user = $ad['id_user'];
+                        $req2 = $db->query("SELECT * FROM user WHERE id_user = $id_user");
+                        $user = $req2->fetch();
+
+                        ?>
+                        <tr>
+                            <td>
+                                <a href="Profil/profil_infos_utilisateur.php?id_user=<?php echo $ad['id_user']?>" class="dark_link">
+                                    <?php echo $user['username']; ?>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="annonce.php?id_ad=<?php echo $ad['id_ad']?>" class="dark_link">
+                                    <?php echo $ad['title']; ?>
+                                </a>
+                            </td>
+                            <td>
+                                <?php
+                                if (isset($ad['ad_date'])) {
+                                    $array = explode(" ", $ad['ad_date']);
+                                    $date = explode("-",$array[0]);
+                                    $new_date = "$date[2]-$date[1]-$date[0]";
+                                    echo $new_date;
+                                }
+                                ?>
+                            </td>
+                        </tr>
+
+                        <?php
+                    }
+                    ?>
+                </table>
+                <?php
+            } else {
+                ?>
+                <i>Cette section est vide.</i>
+                <?php
+            }
+
             ?>
         </div>
     </div>
