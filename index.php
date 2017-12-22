@@ -51,6 +51,7 @@ if (isset($_SESSION['id'])) {
                     <h3>Toutes les annonces</h3>
                     <table class="table table-striped table-hover">
                         <tr class="entete">
+                            <td><b>Numéro de l'annonce</b></td>
                             <td><b>Utilisateur</b></td>
                             <td><b>Titre de l'annonce</b></td>
                             <td><b>Date de mise en ligne</b></td>
@@ -65,6 +66,9 @@ if (isset($_SESSION['id'])) {
                             $user = $req->fetch();
                             ?>
                             <tr>
+                                <td>
+                                    <?php echo $ad['id_ad']; ?>
+                                </td>
                                 <td>
                                     <a href="Profil/profil_infos_utilisateur.php?id_user=<?php echo $ad['id_user']?>" class="dark_link">
                                     <?php echo $user['username']; ?>
