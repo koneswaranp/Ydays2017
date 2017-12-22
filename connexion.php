@@ -21,7 +21,8 @@ else {
 ?>
 
     <div class="form connexion col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
-<form action="" method="post">
+<h3>Connexion</h3>
+        <form action="" method="post">
     <label for="username">Pseudo</label><br>
     <input type="text" name="username" id="username"><br><br>
     <label for="password">Mot de passe</label><br>

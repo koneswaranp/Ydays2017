@@ -20,7 +20,7 @@ if (isset($_SESSION['id'])) {
     ?>
 
     <div class="row">
-            <div class="publish col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+            <div class="form content col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
                 <h2>Publier une annonce</h2>
                 <form action="" method="post">
                     <label for="title">Titre de l'annonce</label><br>
@@ -44,10 +44,11 @@ if (isset($_SESSION['id'])) {
                         ':description' => $_POST['description'],
                         ':id_user' => $_SESSION['id']
                     ]);
+                    echo "Votre annonce a été publié.";
                 } ?>
             </div>
             <div class="row">
-                <div class="ads col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+                <div class="ads content col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
                     <h3>Toutes les annonces</h3>
                     <table class="table table-striped table-hover">
                         <tr class="entete">
@@ -102,7 +103,7 @@ if (isset($_SESSION['id'])) {
 } else {
     ?>
 <div class="row">
-    <div class="publish col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+    <div class="form content col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
     <h2>Bienvenue sur DevoNation</h2>
         <h3>Qui sommes-nous ?</h3>
         <p>
@@ -113,7 +114,7 @@ if (isset($_SESSION['id'])) {
     </div>
 </div>
 <div class="row">
-    <div class="signup publish col-xs-4 col-xs-offset-4 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
+    <div class="content inscription col-xs-4 col-xs-offset-4 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4">
     <h3>
         <a href="inscription.php">
             Inscrivez vous dès maintenant !

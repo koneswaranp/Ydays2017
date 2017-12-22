@@ -85,6 +85,9 @@ $user = $req->fetch();
 
             ?>
 
+            <br>
+            <HR size=2 align=center width="100%">
+            <br>
             <h3>Réponses à vos annonces</h3>
 
             <?php
@@ -114,14 +117,19 @@ $user = $req->fetch();
                             </td>
                             <td>
                                 <?php
-                                echo $re['date_response']
+                                $array = explode(" ", $re['date_response']);
+                                $date = explode("-",$array[0]);
+                                $new_date = "$date[2]-$date[1]-$date[0]";
+                                echo $new_date;
                                 ?>
                             </td>
                             <td>
-                                <?php echo $user['username']; ?>
+                                <a href="Profil/profil_infos_utilisateur.php?id_user=<?php echo $ad['id_user']?>" class="dark_link">
+                                    <?php echo $user['username']; ?>
+                                </a>
                             </td>
                             <td>
-                                <?php echo $re['response'] ?>
+                                <?php echo $re['response']; ?>
                             </td>
                             <td>
                                 <?php
@@ -153,7 +161,9 @@ $user = $req->fetch();
                 <?php
             }
             ?>
-
+            <br>
+            <HR size=2 align=center width="100%">
+            <br>
             <h3>Annonces auxquels vous avez répondu</h3>
 
             <?php
@@ -184,14 +194,19 @@ $user = $req->fetch();
                             </td>
                             <td>
                                 <?php
-                                echo $re['date_response']
+                                $array = explode(" ", $re['date_response']);
+                                $date = explode("-",$array[0]);
+                                $new_date = "$date[2]-$date[1]-$date[0]";
+                                echo $new_date;
                                 ?>
                             </td>
                             <td>
-                                <?php echo $user['username']; ?>
+                                <a href="Profil/profil_infos_utilisateur.php?id_user=<?php echo $ad['id_user']?>" class="dark_link">
+                                    <?php echo $user['username']; ?>
+                                </a>
                             </td>
                             <td>
-                                <?php echo $re['response'] ?>
+                                <?php echo $re['response']; ?>
                             </td>
                             <td>
                                 <?php
@@ -226,7 +241,12 @@ $user = $req->fetch();
                 <?php
             }
 
-            ?><h3>Vos enregistrements</h3>
+            ?>
+
+            <br>
+            <HR size=2 align=center width="100%">
+            <br>
+            <h3>Vos enregistrements</h3>
 
             <?php
 
@@ -238,6 +258,7 @@ $user = $req->fetch();
                 <table class="table table-striped table-hover">
 
                     <tr class="entete">
+                        <td><b>Numéro de l'annonce</b></td>
                         <td><b>Utilisateur</b></td>
                         <td><b>Titre de l'annonce</b></td>
                         <td><b>Date de mise en ligne</b></td>
@@ -258,6 +279,9 @@ $user = $req->fetch();
 
                         ?>
                         <tr>
+                            <td>
+                                <?php echo $ad['id_ad']; ?>
+                            </td>
                             <td>
                                 <a href="Profil/profil_infos_utilisateur.php?id_user=<?php echo $ad['id_user']?>" class="dark_link">
                                     <?php echo $user['username']; ?>
