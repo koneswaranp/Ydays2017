@@ -101,7 +101,6 @@ if (isset($_SESSION['id'])) {
                         ':id_user' => $_SESSION['id'],
                         ':id_ad' => $id_save
                     ]);
-                    print_r($req->errorInfo());
                     echo "Annonce enregistrée";
                 }
             } else {
