@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 15 déc. 2017 à 20:58
+-- Généré le :  sam. 23 déc. 2017 à 19:47
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -38,21 +38,21 @@ CREATE TABLE IF NOT EXISTS `ad` (
   `id_user` int(11) NOT NULL,
   PRIMARY KEY (`id_ad`),
   KEY `FK_ad_id_user` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `ad`
 --
 
 INSERT INTO `ad` (`id_ad`, `title`, `ad_date`, `deadline`, `description`, `id_user`) VALUES
-(6, 'dÃ©veloppement sit web', '2017-12-08 12:16:30', NULL, 'Je recherche une personne mon site vitrine pour ma société.', 4),
-(7, 'appli mobile', '2017-12-11 08:29:53', '2018-03-23', 'Appli de planning étudiant', 4),
-(10, 'site web', '2017-12-14 17:00:08', '2018-04-12', 'bdhzjslgnld qjlbvsl ,vzeskefldn', 5),
+(6, 'dÃ©veloppement sit web', '2017-12-08 12:16:30', NULL, 'Je recherche une personne mon site vitrine pour ma société.\r\nSuperatis Tauri montis verticibus qui ad solis ortum sublimius attolluntur, Cilicia spatiis porrigitur late distentis dives bonis omnibus terra, eiusque lateri dextro adnexa Isauria, pari sorte uberi palmite viget et frugibus minutis, quam mediam navigabile flumen Calycadnus interscindit.\r\n\r\nQuo cognito Constantius ultra mortalem modum exarsit ac nequo casu idem Gallus de futuris incertus agitare quaedam conducentia saluti suae per itinera conaretur, remoti sunt omnes de industria milites agentes in civitatibus perviis.\r\n\r\nHac ex causa conlaticia stipe Valerius humatur ille Publicola et subsidiis amicorum mariti inops cum liberis uxor alitur Reguli et dotatur ex aerario filia Scipionis, cum nobilitas florem adultae virginis diuturnum absentia pauperis erubesceret patris.\r\n\r\nCyprum itidem insulam procul a continenti discretam et portuosam inter municipia crebra urbes duae faciunt claram Salamis et Paphus, altera Iovis delubris altera Veneris templo insignis. tanta autem tamque multiplici fertilitate abundat rerum omnium eadem Cyprus ut nullius externi indigens adminiculi indigenis viribus a fundamento ipso carinae ad supremos usque carbasos aedificet onerariam navem omnibusque armamentis instructam mari committat.', 4),
+(7, 'appli mobile', '2017-12-11 08:29:53', '2018-03-23', 'Appli de planning étudiantSuperatis Tauri montis verticibus qui ad solis ortum sublimius attolluntur, Cilicia spatiis porrigitur late distentis dives bonis omnibus terra, eiusque lateri dextro adnexa Isauria, pari sorte uberi palmite viget et frugibus minutis, quam mediam navigabile flumen Calycadnus interscindit.\r\n\r\nQuo cognito Constantius ultra mortalem modum exarsit ac nequo casu idem Gallus de futuris incertus agitare quaedam conducentia saluti suae per itinera conaretur, remoti sunt omnes de industria milites agentes in civitatibus perviis.\r\n\r\nHac ex causa conlaticia stipe Valerius humatur ille Publicola et subsidiis amicorum mariti inops cum liberis uxor alitur Reguli et dotatur ex aerario filia Scipionis, cum nobilitas florem adultae virginis diuturnum absentia pauperis erubesceret patris.\r\n\r\nCyprum itidem insulam procul a continenti discretam et portuosam inter municipia crebra urbes duae faciunt claram Salamis et Paphus, altera Iovis delubris altera Veneris templo insignis. tanta autem tamque multiplici fertilitate abundat rerum omnium eadem Cyprus ut nullius externi indigens adminiculi indigenis viribus a fundamento ipso carinae ad supremos usque carbasos aedificet onerariam navem omnibusque armamentis instructam mari committat.', 4),
+(10, 'site web', '2017-12-14 17:00:08', '2018-04-12', 'vzeskefldnSuperatis Tauri montis verticibus qui ad solis ortum sublimius attolluntur, Cilicia spatiis porrigitur late distentis dives bonis omnibus terra, eiusque lateri dextro adnexa Isauria, pari sorte uberi palmite viget et frugibus minutis, quam mediam navigabile flumen Calycadnus interscindit.\r\n\r\nQuo cognito Constantius ultra mortalem modum exarsit ac nequo casu idem Gallus de futuris incertus agitare quaedam conducentia saluti suae per itinera conaretur, remoti sunt omnes de industria milites agentes in civitatibus perviis.\r\n\r\nHac ex causa conlaticia stipe Valerius humatur ille Publicola et subsidiis amicorum mariti inops cum liberis uxor alitur Reguli et dotatur ex aerario filia Scipionis, cum nobilitas florem adultae virginis diuturnum absentia pauperis erubesceret patris.\r\n\r\nCyprum itidem insulam procul a continenti discretam et portuosam inter municipia crebra urbes duae faciunt claram Salamis et Paphus, altera Iovis delubris altera Veneris templo insignis. tanta autem tamque multiplici fertilitate abundat rerum omnium eadem Cyprus ut nullius externi indigens adminiculi indigenis viribus a fundamento ipso carinae ad supremos usque carbasos aedificet onerariam navem omnibusque armamentis instructam mari committat.', 5),
 (11, 'Application mobile annonce en ligne', '2017-12-15 21:26:42', NULL, 'Post haec Gallus Hierapolim profecturus ut expeditioni specie tenus adesset, Antiochensi plebi suppliciter obsecranti ut inediae dispelleret metum, quae per multas difficilisque causas adfore iam sperabatur, non ut mos est principibus, quorum diffusa potestas localibus subinde medetur aerumnis, disponi quicquam statuit vel ex provinciis alimenta transferri conterminis, sed consularem Syriae Theophilum prope adstantem ultima metuenti multitudini dedit id adsidue replicando quod invito rectore nullus egere poterit victu.', 8),
-(12, 'E-commerce', '2017-12-15 21:18:07', '2017-11-10', 'Projet d\'un mois creation d\'un site e-commerce', 10),
-(13, 'Site e-commerce ', '2017-12-15 21:21:21', '2012-05-12', 'Faire un site simple pour que les clients comprennent', 11),
-(14, 'Portfolio', '2017-12-15 21:13:58', '2017-11-14', 'CrÃ©er son portfolio en Html', 9),
-(15, 'Jeux d\'echec', '2017-12-15 21:15:11', '2017-10-25', 'Projet c# creer un jeu d\'echec ', 9);
+(12, 'E-commerce', '2017-12-15 21:18:07', '2017-11-10', 'Projet d\'un mois creation d\'un site e-commerce\r\nSuperatis Tauri montis verticibus qui ad solis ortum sublimius attolluntur, Cilicia spatiis porrigitur late distentis dives bonis omnibus terra, eiusque lateri dextro adnexa Isauria, pari sorte uberi palmite viget et frugibus minutis, quam mediam navigabile flumen Calycadnus interscindit.\r\n\r\nQuo cognito Constantius ultra mortalem modum exarsit ac nequo casu idem Gallus de futuris incertus agitare quaedam conducentia saluti suae per itinera conaretur, remoti sunt omnes de industria milites agentes in civitatibus perviis.\r\n\r\nHac ex causa conlaticia stipe Valerius humatur ille Publicola et subsidiis amicorum mariti inops cum liberis uxor alitur Reguli et dotatur ex aerario filia Scipionis, cum nobilitas florem adultae virginis diuturnum absentia pauperis erubesceret patris.\r\n\r\nCyprum itidem insulam procul a continenti discretam et portuosam inter municipia crebra urbes duae faciunt claram Salamis et Paphus, altera Iovis delubris altera Veneris templo insignis. tanta autem tamque multiplici fertilitate abundat rerum omnium eadem Cyprus ut nullius externi indigens adminiculi indigenis viribus a fundamento ipso carinae ad supremos usque carbasos aedificet onerariam navem omnibusque armamentis instructam mari committat.', 10),
+(13, 'Site e-commerce ', '2017-12-15 21:21:21', '2012-05-12', 'Superatis Tauri montis verticibus qui ad solis ortum sublimius attolluntur, Cilicia spatiis porrigitur late distentis dives bonis omnibus terra, eiusque lateri dextro adnexa Isauria, pari sorte uberi palmite viget et frugibus minutis, quam mediam navigabile flumen Calycadnus interscindit.\r\n\r\nQuo cognito Constantius ultra mortalem modum exarsit ac nequo casu idem Gallus de futuris incertus agitare quaedam conducentia saluti suae per itinera conaretur, remoti sunt omnes de industria milites agentes in civitatibus perviis.\r\n\r\nHac ex causa conlaticia stipe Valerius humatur ille Publicola et subsidiis amicorum mariti inops cum liberis uxor alitur Reguli et dotatur ex aerario filia Scipionis, cum nobilitas florem adultae virginis diuturnum absentia pauperis erubesceret patris.\r\n\r\nCyprum itidem insulam procul a continenti discretam et portuosam inter municipia crebra urbes duae faciunt claram Salamis et Paphus, altera Iovis delubris altera Veneris templo insignis. tanta autem tamque multiplici fertilitate abundat rerum omnium eadem Cyprus ut nullius externi indigens adminiculi indigenis viribus a fundamento ipso carinae ad supremos usque carbasos aedificet onerariam navem omnibusque armamentis instructam mari committat.', 11),
+(14, 'Portfolio', '2017-12-15 21:13:58', '2017-11-14', 'Superatis Tauri montis verticibus qui ad solis ortum sublimius attolluntur, Cilicia spatiis porrigitur late distentis dives bonis omnibus terra, eiusque lateri dextro adnexa Isauria, pari sorte uberi palmite viget et frugibus minutis, quam mediam navigabile flumen Calycadnus interscindit.\r\n\r\nQuo cognito Constantius ultra mortalem modum exarsit ac nequo casu idem Gallus de futuris incertus agitare quaedam conducentia saluti suae per itinera conaretur, remoti sunt omnes de industria milites agentes in civitatibus perviis.\r\n\r\nHac ex causa conlaticia stipe Valerius humatur ille Publicola et subsidiis amicorum mariti inops cum liberis uxor alitur Reguli et dotatur ex aerario filia Scipionis, cum nobilitas florem adultae virginis diuturnum absentia pauperis erubesceret patris.\r\n\r\nCyprum itidem insulam procul a continenti discretam et portuosam inter municipia crebra urbes duae faciunt claram Salamis et Paphus, altera Iovis delubris altera Veneris templo insignis. tanta autem tamque multiplici fertilitate abundat rerum omnium eadem Cyprus ut nullius externi indigens adminiculi indigenis viribus a fundamento ipso carinae ad supremos usque carbasos aedificet onerariam navem omnibusque armamentis instructam mari committat.', 9),
+(15, 'Jeux d\'echec', '2017-12-15 21:15:11', '2017-10-25', 'Superatis Tauri montis verticibus qui ad solis ortum sublimius attolluntur, Cilicia spatiis porrigitur late distentis dives bonis omnibus terra, eiusque lateri dextro adnexa Isauria, pari sorte uberi palmite viget et frugibus minutis, quam mediam navigabile flumen Calycadnus interscindit.\r\n\r\nQuo cognito Constantius ultra mortalem modum exarsit ac nequo casu idem Gallus de futuris incertus agitare quaedam conducentia saluti suae per itinera conaretur, remoti sunt omnes de industria milites agentes in civitatibus perviis.\r\n\r\nHac ex causa conlaticia stipe Valerius humatur ille Publicola et subsidiis amicorum mariti inops cum liberis uxor alitur Reguli et dotatur ex aerario filia Scipionis, cum nobilitas florem adultae virginis diuturnum absentia pauperis erubesceret patris.\r\n\r\nCyprum itidem insulam procul a continenti discretam et portuosam inter municipia crebra urbes duae faciunt claram Salamis et Paphus, altera Iovis delubris altera Veneris templo insignis. tanta autem tamque multiplici fertilitate abundat rerum omnium eadem Cyprus ut nullius externi indigens adminiculi indigenis viribus a fundamento ipso carinae ad supremos usque carbasos aedificet onerariam navem omnibusque armamentis instructam mari committat.c ', 9);
 
 -- --------------------------------------------------------
 
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `response` (
   `accepted` varchar(5) DEFAULT NULL,
   `comments` text,
   PRIMARY KEY (`id_response`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `response`
@@ -93,7 +93,15 @@ CREATE TABLE IF NOT EXISTS `response` (
 
 INSERT INTO `response` (`id_response`, `date_response`, `response`, `id_client`, `id_dev`, `id_ad`, `accepted`, `comments`) VALUES
 (3, '2017-12-15', 'Je serai intÃ©ressÃ©e pour rÃ©aliser votre projet de jeu d\'Ã©checs. Je l\'ai dÃ©jÃ  fait auparavant.', 9, 12, 15, NULL, NULL),
-(4, '2017-12-15', 'bbbbb', 9, 8, 15, NULL, NULL);
+(4, '2017-12-15', 'bbbbb', 9, 8, 15, NULL, NULL),
+(5, '2017-12-20', 'Bonjour, je suis intÃ©ressÃ©e par votre annonce.', 4, 7, 6, 'true', 'J\'accepte parce que voilÃ  t\'es gentille.'),
+(6, '2017-12-20', 'Hello.', 11, 4, 13, NULL, NULL),
+(7, '2017-12-20', 'vjhgkjhk', 8, 4, 11, 'true', ''),
+(8, '2017-12-20', 'zgsiejdhgodrkhfv', 7, 4, 16, 'true', ''),
+(9, '2017-12-20', 'fsefsfrgtdgdgfdc', 4, 7, 7, 'false', ''),
+(10, '2017-12-20', 'cdsgcghghffsxd', 7, 13, 16, NULL, NULL),
+(11, '2017-12-20', 'qesdhdtgcjhdrgqehf', 8, 7, 11, NULL, NULL),
+(12, '2017-12-21', 'fedqwfvdxvdfv', 10, 7, 12, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -108,6 +116,17 @@ CREATE TABLE IF NOT EXISTS `save` (
   PRIMARY KEY (`id_user`,`id_ad`),
   KEY `FK_save_id_ad` (`id_ad`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `save`
+--
+
+INSERT INTO `save` (`id_user`, `id_ad`) VALUES
+(7, 7),
+(7, 11),
+(7, 12),
+(7, 13),
+(7, 15);
 
 -- --------------------------------------------------------
 
@@ -131,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `perso` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_user`),
   UNIQUE KEY `username` (`username`,`mail`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `user`
@@ -146,7 +165,8 @@ INSERT INTO `user` (`id_user`, `username`, `last_name`, `first_name`, `mail`, `p
 (9, 'Theepa', 'KONESWARAN', 'Pratheepa', 'pratheepa.koneswaran@ynov.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', '0123456789', 'img/photo5a342cc3a614e.jpg', NULL, NULL, NULL, NULL),
 (10, 'Cherine', 'Nicolas', 'Cherine', 'cherine@live.fr', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '9876543210', 'img/photo5a342dba5d7d3.jpg', NULL, NULL, NULL, NULL),
 (11, 'Theo', 'David', 'ThÃ©o', 'theo@hotmail.fr', 'cf91a9cfe0882326bc9e5276dcdb1cce8cbef4ce', '1234567890', 'img/photo5a342e70ea049.jpg', NULL, NULL, NULL, NULL),
-(12, 'Thanu', 'THILIPKMUAR', 'Thanuga', 'thanuga.thilipkumar@ynov.com', 'e7c0e5250ef1f2c7bc0298c228ae06af58a1b022', '0558345613', 'img/photo5a343405682de.png', NULL, NULL, NULL, NULL);
+(12, 'Thanu', 'THILIPKMUAR', 'Thanuga', 'thanuga.thilipkumar@ynov.com', 'e7c0e5250ef1f2c7bc0298c228ae06af58a1b022', '0558345613', 'img/photo5a343405682de.png', NULL, NULL, NULL, NULL),
+(13, 'test', 'test', 'test', 'test@test.fr', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', '123456789', 'img/photo5a3a8db4d8041.jpg', NULL, NULL, NULL, NULL);
 
 --
 -- Contraintes pour les tables déchargées
