@@ -30,7 +30,7 @@ if (isset($_SESSION['id'])) {
                     <label for="deadline">Date de fin</label><br>
                     <input type="date" name="deadline" id="deadline" value=""><br><br>
                     <label for="description">Description de l'annonce</label><br>
-                    <textarea name="description" id="content" cols="90" rows="10"></textarea><br><br>
+                    <textarea name="description" id="content" cols="80" rows="10"></textarea><br><br>
                     <input type="submit" content="S'inscrire" class="btn">
                 </form>
 
